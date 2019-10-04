@@ -6,7 +6,7 @@ This tutorial shows how to test a tensorflow lite object detection model. It is 
 The given code will work for any of the re-trained model on SSD-MobileNet model. I have chosen ssd_mobilenet_v2_coco and ssd_mobilenet_v2_quantized_coco from the given list of pre-trained classfiers among [model zoo]( https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md). The code is designed in such a way it will work with both the type of models: quantized as well as non-quantized.
 
 This readme describes every step required to run your tensorflow lite model:
-1. Training of Object detectin model (See [Custom object detection](https://github.com/khushi2091/Custom-Object-Detection-Tutorial))
+1. Training of Object detectin model (See [Custom object detection](https://github.com/khushi2091/Tensorflow-Custom-Object-Detection-Tutorial))
 2. Export your trained model using the model check point. Run thefollowing commands: 
   ```
   cd /tensorflow/models/research/object_detetcion/
