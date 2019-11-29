@@ -5,16 +5,16 @@ import cv2
 import re
 import json
 from PIL import Image
-import numpy as np
+from io import BytesIO
 
 def detect_license_plate(pil_image):
     license_number = ""
     url = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyA1GYvKPFVjzk-xPgVkA73pPoNtG7ksRxA'
     res = ''
-    image = np.array(pil_image) 
-    image = cv2.imencode('.jpg', image)[1].tostring()
-    img_base64 = base64.b64encode(image)
-    ig = str(img_base64)
+    buffered = BytesIO()
+    pil_image.save(buffered, format="JPEG")
+    img_str = base64.b64encode(buffered.getvalue())
+    ig = str(img_str)
     ik=ig.replace('b\'','')
     headers={'content-type': 'application/json'}
     
@@ -58,7 +58,7 @@ def detect_license_plate(pil_image):
     return(license_number)
 
 count = -1
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 license_p = ''
 msg = ''
 cv2.namedWindow('License Plate', cv2.WINDOW_NORMAL)
